@@ -1,9 +1,9 @@
 import React, {Component} from 'react'; 
 import {View, Text, StyleSheet, Platform} from 'react-native'; 
 import {Icon, Header, Body, Title} from 'native-base'; 
+import HomeTab from './AppTabNavigator/HomeTab';
+import FavoriteTab from './AppTabNavigator/FavoriteTab';
 import {TabNavigator} from 'react-navigation';
-import {HomeTab} from './AppTabNavigator/HomeTab';
-import {FavoriteTab} from './AppTabNavigator/FavoriteTab';
 
 export default class MainScreen extends Component { 
     static navigationOptions = { 
@@ -31,4 +31,4 @@ export default class MainScreen extends Component {
             alignItems: 'center', 
             justifyContent: 'center', 
         } 
-    })﻿
+    })

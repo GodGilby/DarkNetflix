@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/home/gilby/Proyecto/DarkNetflix/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/home/gilby/Proyecto/DarkNetflix/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/res/xml/preferences.xml"
+        "merged": "C:\\Users\\Visitor\\ThomasDon\\DarkNetflix\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
+        "source": "C:\\Users\\Visitor\\ThomasDon\\DarkNetflix\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.55.4\\res\\xml\\preferences.xml"
+    },
+    {
+        "merged": "C:\\home\\gilby\\Proyecto\\DarkNetflix\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
+        "source": "C:\\home\\gilby\\Proyecto\\DarkNetflix\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.55.4\\res\\xml\\preferences.xml"
     }
 ]

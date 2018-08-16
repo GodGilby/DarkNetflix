@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/home/gilby/Proyecto/DarkNetflix/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
-        "source": "/home/gilby/Proyecto/DarkNetflix/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\Visitor\\ThomasDon\\DarkNetflix\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Visitor\\ThomasDon\\DarkNetflix\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\home\\gilby\\Proyecto\\DarkNetflix\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher.png",
+        "source": "C:\\home\\gilby\\Proyecto\\DarkNetflix\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }
 ]

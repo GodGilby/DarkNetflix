@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Platform} from 'react-native'; 
 
 
-export default class FavoriteTab extends Component { 
+export default class FavoriteTab extends React.Component { 
         render() { 
             return ( 
             <View style={styles.container}> 
