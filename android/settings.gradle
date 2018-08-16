@@ -1,0 +1,3 @@
+rootProject.name = 'DarkNetlix'
+
+include ':app'
