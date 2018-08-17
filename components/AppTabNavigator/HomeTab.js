@@ -26,15 +26,8 @@ class HomeTab extends React.Component {
 
     state = {
 
-        popupIsOpen: false,
+        popupIsOpen: false
 
-        // Day chosen by user
-
-        chosenDay: 0,       // choose first day by default
-
-        // Time chosen by user
-
-        chosenTime: null,
 
     }
 
@@ -58,13 +51,7 @@ class HomeTab extends React.Component {
 
         this.setState({
 
-            popupIsOpen: false,
-
-            // Reset values to default ones
-
-            chosenDay: 0,
-
-            chosenTime: null,
+            popupIsOpen: false
 
         });
 

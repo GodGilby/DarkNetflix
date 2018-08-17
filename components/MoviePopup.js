@@ -26,74 +26,43 @@ const defaultHeight = height * 0.67;
 
 export default class MoviePopup extends Component {
 
-  static propTypes = {
-    // isOpen: PropTypes.bool.isRequired,
-    // Movie object that has title, genre, poster, days and times
-    // movie: PropTypes.object,
-    // // Index of chosen day
-    // chosenDay: PropTypes.number,
-    // // Index of chosem show time
-    // chosenTime: PropTypes.number,
-    // // Gets called when user chooses day
-    // onChooseDay: PropTypes.func,
-    // // Gets called when user chooses time
-    // onChooseTime: PropTypes.func,
-    // // Gets called when user books their ticket
-    // onBook: PropTypes.func,
-    // // Gets called when popup closed
-    // onClose: PropTypes.func,
-  }
+  static propTypes = {}
 
   state = {
-    // Animates slide ups and downs when popup open or closed
     position: new Animated.Value(this.props.isOpen ? 0 : height),
-    // Backdrop opacity
     opacity: new Animated.Value(0),
-    // Popup height that can be changed by pulling it up or down
     height: defaultHeight,
-    // Expanded mode with bigger poster flag
     expanded: false,
-    // Visibility flag
     visible: this.props.isOpen,
   };
 
-  // When user starts pulling popup previous height gets stored here
-  // to help us calculate new height value during and after pulling
   _previousHeight = 0
 
   componentWillMount() {
-    // Initialize PanResponder to handle move gestures
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onMoveShouldSetPanResponder: (evt, gestureState) => {
         const { dx, dy } = gestureState;
-        // Ignore taps
         if (dx !== 0 && dy === 0) {
           return true;
         }
         return false;
       },
       onPanResponderGrant: (evt, gestureState) => {
-        // Store previous height before user changed it
         this._previousHeight = this.state.height;
       },
       onPanResponderMove: (evt, gestureState) => {
-        // Pull delta and velocity values for y axis from gestureState
         const { dy, vy } = gestureState;
-        // Subtract delta y from previous height to get new height
         let newHeight = this._previousHeight - dy;
 
-        // Animate heigh change so it looks smooth
         LayoutAnimation.easeInEaseOut();
 
-        // Switch to expanded mode if popup pulled up above 80% mark
         if (newHeight > height - height / 5) {
           this.setState({ expanded: true });
         } else {
           this.setState({ expanded: false });
         }
 
-        // Expand to full height if pulled up rapidly
         if (vy < -0.75) {
           this.setState({
             expanded: true,
@@ -101,15 +70,14 @@ export default class MoviePopup extends Component {
           });
         }
 
-        // Close if pulled down rapidly
         else if (vy > 0.75) {
           this.props.onClose();
         }
-        // Close if pulled below 75% mark of default height
+
         else if (newHeight < defaultHeight * 0.75) {
           this.props.onClose();
         }
-        // Limit max height to screen height
+
         else if (newHeight > height) {
           this.setState({ height: height });
         }
@@ -122,44 +90,43 @@ export default class MoviePopup extends Component {
         const { dy } = gestureState;
         const newHeight = this._previousHeight - dy;
 
-        // Close if pulled below default height
+        
         if (newHeight < defaultHeight) {
           this.props.onClose();
         }
 
-        // Update previous height
+        
         this._previousHeight = this.state.height;
       },
       onShouldBlockNativeResponder: (evt, gestureState) => {
-        // Returns whether this component should block native components from becoming the JS
-        // responder. Returns true by default. Is currently only supported on android.
+        
         return true;
       },
     });
   }
 
-  // Handle isOpen changes to either open or close popup
+  
   componentWillReceiveProps(nextProps) {
-    // isOpen prop changed to true from false
+    
     if (!this.props.isOpen && nextProps.isOpen) {
       this.animateOpen();
     }
-    // isOpen prop changed to false from true
+  
     else if (this.props.isOpen && !nextProps.isOpen) {
       this.animateClose();
     }
   }
 
-  // Open popup
+  
   animateOpen() {
-    // Update state first
+    
     this.setState({ visible: true }, () => {
       Animated.parallel([
-        // Animate opacity
+        
         Animated.timing(
           this.state.opacity, { toValue: 0.5 } // semi-transparent
         ),
-        // And slide up
+        
         Animated.timing(
           this.state.position, { toValue: 0 } // top of the screen
         ),
@@ -167,10 +134,10 @@ export default class MoviePopup extends Component {
     });
   }
 
-  // Close popup
+  
   animateClose() {
     Animated.parallel([
-      // Animate opacity
+      
       Animated.timing(
         this.state.opacity, { toValue: 0 } // transparent
       ),
@@ -258,7 +225,7 @@ export default class MoviePopup extends Component {
               </View>
               {/* Title and genre */}
               <View style={[styles.movieInfo, this.getStyles().movieInfo]}>
-                <Text style={[styles.title, this.getStyles().title]}>{title}</Text>
+                {/* <Text style={[styles.title, this.getStyles().title]}>{title}</Text> */}
                 {/* <Text style={styles.genre}>{genre}</Text> */}
               </View>
             </View>
@@ -266,32 +233,20 @@ export default class MoviePopup extends Component {
             {/* Showtimes */}
             <View>
               {/* Day */}
-              <Text style={styles.sectionHeader}>Day</Text>
-              <Options
-                // values={days}
-                chosen={chosenDay}
-                onChoose={onChooseDay}
-              />
-              {/* Time */}
-              <Text style={styles.sectionHeader}>Showtime</Text>
-              <Options
-                // values={times}
-                chosen={chosenTime}
-                onChoose={onChooseTime}
-              />
-
+             
             </View>
 
           </View>
 
           {/* Footer */}
-          <View style={styles.footer}>
+          <View style={[styles.movieInfo, this.getStyles().movieInfo]}>
             <TouchableHighlight
               underlayColor="#9575CD"
               style={styles.buttonContainer}
               onPress={onBook}
             >
-              <Text style={styles.button}>Book My Tickets</Text>
+              <Text style={styles.button}>Descripcion</Text>
+              <Text style={[styles.title, this.getStyles().title]}>{title}</Text>
             </TouchableHighlight>
           </View>
 
@@ -325,18 +280,18 @@ const styles = StyleSheet.create({
   },
   // Movie container
   movieContainer: {
-    flex: 1,                            // take up all available space
+    flex: 1,                            
     marginBottom: 20,
   },
   imageContainer: {
-    flex: 1,                            // take up all available space
+    flex: 1,                            
   },
   image: {
-    borderRadius: 10,                   // rounded corners
-    ...StyleSheet.absoluteFillObject,   // fill up all space in a container
+    borderRadius: 10,                   
+    ...StyleSheet.absoluteFillObject,   
   },
   movieInfo: {
-    backgroundColor: 'transparent',     // looks nicier when switching to/from expanded mode
+    backgroundColor: 'transparent',     
   },
   title: {
     ...defaultStyles.text,

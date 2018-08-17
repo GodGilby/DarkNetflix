@@ -36,17 +36,8 @@ const cols = 3, rows = 3;
 
 export default class MoviePoster extends Component {
 
-    // Component prop types
 
     static propTypes = {
-
-        // Movie object with title, genre, and poster
-
-        // movie: PropTypes.object.isRequired,
-
-        // Called when user taps on a poster
-
-        // onOpen: PropTypes.func.isRequired,
 
     }
 
@@ -94,15 +85,15 @@ const styles = StyleSheet.create({
 
     imageContainer: {
 
-        flex: 1,                          // take up all available space
+        flex: 1,                         
 
     },
 
     image: {
 
-        borderRadius: 10,                 // rounded corners
+        borderRadius: 10,                 
 
-        ...StyleSheet.absoluteFillObject, // fill up all space in a container
+        ...StyleSheet.absoluteFillObject, 
 
     },
 
